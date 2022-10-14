@@ -19,10 +19,10 @@ public class Categoria {
     private String descripcion;
 
     @Column(name = "estado")
-    private int estado;
+    private Boolean estado;
 
     @OneToMany(mappedBy = "categoria")
-    private List<Producto> productos;
+    private List<Producto> categoria;
 
 
     public Integer getId(){
@@ -33,7 +33,7 @@ public class Categoria {
         return this.descripcion;
     }
 
-    public int getEstado(){
+    public Boolean getEstado(){
         return this.estado;
     }
 
@@ -41,7 +41,7 @@ public class Categoria {
         this.id = id;
     }
 
-    public void setDescripcion(int estado){
+    public void setDescripcion(Boolean estado){
         this.estado = estado;
     }
 

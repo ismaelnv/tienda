@@ -18,11 +18,12 @@ public class ComprasProducto {
     private String estado;
 
     @ManyToOne
-    @JoinColumn(name = "id_compra")
+    @JoinColumn(name = "id_compra", insertable =  false, updatable =  false)
     private Compra compras;
 
     @ManyToOne
-    @JoinColumn(name = "id_producto")
+    @JoinColumn(name = "id_producto", insertable = false, updatable = false)
+    private Producto productos;
    
     public Integer getCantidad(){
         return this.cantidad;

@@ -30,14 +30,14 @@ public class Producto {
 
     @Column(name = "cantidad_stock")
     private Integer cantidadStock;
-    private Float estado;
+    private Boolean estado;
     
     @ManyToOne
     @JoinColumn(name = "categoria_id" , insertable = false , updatable = false)
     private Categoria categoria;
 
     @OneToMany(mappedBy = "productos")
-    private List<ComprasProducto> comprasProductos;
+    private List<ComprasProducto> productos;
 
     public Integer getProductoId(){
         return this.productoId;
@@ -63,7 +63,7 @@ public class Producto {
         return this.cantidadStock;
     }
 
-    public Float getEstado(){
+    public Boolean getEstado(){
         return this.estado;
     }
 
@@ -91,7 +91,7 @@ public class Producto {
         this.cantidadStock = cantidadStock;
     }
 
-    public void setEstado(Float estado){
+    public void setEstado(Boolean estado){
         this.estado = estado;
     }
 

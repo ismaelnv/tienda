@@ -23,7 +23,7 @@ public class Cliente {
     private String email;
     
     @OneToMany(mappedBy = "cliente")
-    private List<Compra> compras;
+    private List<Compra> cliente;
     
     public Integer getClienteId(){
         return this.clienteId;

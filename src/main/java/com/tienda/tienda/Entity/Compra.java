@@ -7,7 +7,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import java.util.List;
 
 @Entity
@@ -31,7 +30,7 @@ public class Compra {
     private Cliente cliente;
 
     @OneToMany(mappedBy = "compras")
-    List <ComprasProducto> comprasProductos;
+    List <ComprasProducto> compras;
 
     public Integer getComprasId(){
         return this.comprasId;
