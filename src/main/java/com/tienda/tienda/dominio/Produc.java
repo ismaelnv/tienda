@@ -7,7 +7,7 @@ public class Produc {
     private Integer categoryId;
     private Double PVenta;
     private Integer stock;
-    private Boolean estado;
+    private Boolean activo;
     
     public Integer getProductId(){
         return this.productId;
@@ -29,8 +29,8 @@ public class Produc {
         return this.stock;
     }
 
-    public Boolean getEstado(){
-        return this.estado;
+    public Boolean getActivo(){
+        return this.activo;
     }
 
     public void setProductId(Integer productId){
@@ -53,8 +53,8 @@ public class Produc {
         this.stock = stock;
     }
 
-    public void setEstado(Boolean estado){
-        this.estado = estado;
+    public void setActivo(Boolean activo){
+        this.activo = activo;
     }
         
     

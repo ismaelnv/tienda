@@ -4,7 +4,7 @@ public class Categori {
 
     private Integer categoryId;
     private String category;
-    private Boolean estado;
+    private Boolean active;
      
     public Integer getCategoryId(){
         return this.categoryId;
@@ -14,8 +14,8 @@ public class Categori {
         return this.category;
     }
     
-    public Boolean getEstado(){
-        return this.estado;
+    public Boolean getActive(){
+        return this.active;
     }
 
     public void setCategoryId(Integer categoryId){
@@ -26,8 +26,8 @@ public class Categori {
         this.category = category;
     }
     
-    public  void setEstado(Boolean estado){
-        this.estado = estado;
+    public  void setActive(Boolean active){
+        this.active = active;
     }
 
     

@@ -5,35 +5,50 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
+import com.tienda.tienda.Entity.ProducMapper;
 import com.tienda.tienda.Entity.Producto;
+import com.tienda.tienda.dominio.Produc;
+import com.tienda.tienda.dominio.ProducRepository;
 
 @Repository
-public class ProductoRepository {
+public class ProductoRepository implements ProducRepository{
 
     private ProductoCrudRepository productoCrudRepository;
-
-    public List<Producto> getProductos(){ 
-     return (List<Producto>) productoCrudRepository.findAll();//Traera todo los productos 
-    }
-
-    public List<Producto> getIdCategoriaYProducto(Integer categoriaId){
-        return productoCrudRepository.finByIdCtegoriaOrderByNombreAsc(categoriaId);
-    }
-
-    public Optional<List<Producto>> getEscasos(Integer cantidad){
-        return productoCrudRepository.finByCantidadStocklessThanAndEstado(cantidad);//Buscara productos escasos
-    }
-
-    public Optional<Producto> getProductoId( Integer productoId){
-        return productoCrudRepository.findById(productoId);//buscara el productor por el id
-    }
-
-    public Producto agregarProducto(Producto producto){
-        return productoCrudRepository.save(producto);//Para agregar un producto ala base de datos
+    private ProducMapper mapper;
+    
+    @Override
+    public List<Produc> getAll(){ 
+        List<Producto> productos = (List<Producto>) productoCrudRepository.findAll();
+        return mapper.toProduc(productos);//Traera todo los productos 
     }
     
-    public void eliminarProductoU( Integer productoId){
-        productoCrudRepository.deleteById(productoId);//Para eliminar productos 
+    @Override
+    public Optional<List<Produc>> getByCategori(Integer categoryId){
+        List<Producto> productos = productoCrudRepository.finByIdCtegoriaOrderByNombreAsc(categoryId);
+        return Optional.of(mapper.toProduc(productos));
+    }
+    
+    @Override
+    public Optional<List<Produc>> getEscasosProduc(Integer stock){
+        Optional<List<Producto>> productos = productoCrudRepository.finByCantidadStocklessThanAndEstado(stock);//Buscara productos escasos
+        return productos.map(prods -> mapper.toProduc(prods));
+    }
+    
+    @Override
+    public Optional<Produc> getProducId( Integer productId){
+        return productoCrudRepository.findById(productId).map(producto -> mapper.toProduc(producto)); //buscara el productor por el id
+        
+    }
+    
+    @Override
+    public Produc save(Produc produc){
+        Producto producto = mapper.toProducto(produc);
+        return mapper.toProduc(productoCrudRepository.save(producto));//Para agregar un producto ala base de datos
+    }
+    
+    @Override
+    public void  delete( Integer productId){
+        productoCrudRepository.deleteById(productId);//Para eliminar productos 
     }
   
     

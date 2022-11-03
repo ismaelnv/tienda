@@ -30,7 +30,7 @@ public class Compra {
     private Cliente cliente;
 
     @OneToMany(mappedBy = "compras")
-    List <ComprasProducto> compras;
+    List <ComprasProducto> comprasProductos;
 
     public Integer getComprasId(){
         return this.comprasId;
