@@ -8,7 +8,7 @@ public interface ProducRepository{
     List<Produc> getAll();
     Optional< List<Produc>> getByCategori(Integer categoryId);
     Optional<List<Produc>> getEscasosProduc(Integer quentyti );
-    Optional<Produc> getProducId(Integer ProductId);
+    Optional<Produc> getProducId(Integer productId);
     Produc save(Produc produc);
     void delete(Integer ProductId);
 

@@ -3,6 +3,7 @@ package com.tienda.tienda;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.tienda.tienda.Entity.ProducMapper;
@@ -12,8 +13,9 @@ import com.tienda.tienda.dominio.ProducRepository;
 
 @Repository
 public class ProductoRepository implements ProducRepository{
-
+    @Autowired
     private ProductoCrudRepository productoCrudRepository;
+    @Autowired
     private ProducMapper mapper;
     
     @Override
